@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>GSPL Code Generator</title>
+	<script type="text/javascript" src="JsBarcode.all.min.js"></script>
+	<script type="text/javascript" src="qrcode.min.js"></script>
+</head>
+<body>
+	<!-- https://github.com/lindell/JsBarcode -->
+	<!-- https://davidshimjs.github.io/qrcodejs/ -->
+	<input type="text" name="txt_input" id="txt_input" size="50">
+	<button id="btn_generate">Generate Code</button>
+	<br/>
+	<svg id="barcode"></svg>
+
+	<script type="text/javascript">
+		document.getElementById("btn_generate").addEventListener('click', function(){
+			var text = document.getElementById("txt_input").value;
+			JsBarcode("#barcode", text);
+		});
+	</script>
+
+	<br/>
+
+	<div id="qrcode"></div>
+	<script type="text/javascript">
+		document.getElementById("btn_generate").addEventListener('click', function(){
+			document.getElementById("qrcode").innerHTML = "";
+			var text = document.getElementById("txt_input").value;
+			new QRCode(document.getElementById("qrcode"), text);
+		});
+	</script>
+
+</body>
+</html>
